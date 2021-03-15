@@ -39,16 +39,15 @@ print(
 
 print()
 
-greater_than_hundred = False
-new_array = np.full(4, 5)
-print(dt.new_array)
+new_array = np.
 sale = 100
 
-for row in salesArray:
-    for column in row:
-        if column >= 100:
-            new_array = column
-
+count = 0
+for i in salesArray.flat:
+    if i >= 100:
+        new_array = i
+        count += 1
+print(new_array)
 
 ## Step 4: Print the total sales for each register.
 print(
