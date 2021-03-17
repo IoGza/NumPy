@@ -39,35 +39,51 @@ print(
 
 print()
 
-new_array = np.
-sale = 100
+new_array = np.array([i for i in salesArray >= 100],dtype=int)
+
+print(new_array)
+
 
 count = 0
-for i in salesArray.flat:
-    if i >= 100:
-        new_array = i
-        count += 1
-print(new_array)
+# for i in salesArray:
+#     if i >= 100:
+#         print(salesArray.all())
+
 
 ## Step 4: Print the total sales for each register.
 print(
     "-----------------------------------------------   STEP FOUR   -----------------------------------------------"
 )
 
+
+g = salesArray.sum(axis=1)
+print("Sum of each register ", g)
+
 print()
 
 ## Step 5: Superstore is a cashless store and needs to calculate their owed credit card fees. Each sale is subject to a 2% credit card fee.
-#           Using the salesArray, create a new array that stores the 2% fee for each sale and register. Print the array and then print the total fees.
+# Using the salesArray, create a new array that stores the 2% fee for each sale and register. Print the array and then print the total fees.
 print(
     "-----------------------------------------------   STEP FIVE  -----------------------------------------------"
 )
 
+# fee_array = np.full((5, 4), 0.02)
+fee_array = salesArray * 0.02
+
+print("Fees per sale on register: \n", np.round(fee_array, 2))
+
+print("Total fees: ", np.round(fee_array.sum(), 2))
+
 print()
 
-## Step 6: Using your fee array and salesArray, calculate how much profit Superstore made for each sale after paying credit card fees. Store this in a new array and print it.
+## Step 6: Using your fee array and salesArray, calculate how much profit Superstore made for each sale after paying credit card fees.
+# Store this in a new array and print it.
 print(
     "-----------------------------------------------   STEP SIX  -----------------------------------------------"
 )
+profit_array = salesArray - fee_array
+print(np.round(profit_array), 2)
+
 
 print()
 
@@ -76,13 +92,19 @@ print(
     "-----------------------------------------------   STEP SEVEN  -----------------------------------------------"
 )
 
+print(salesArray[[1, 3]])
+
 print()
 
-## Step 8: Superstore has added a 5th cash register who's data is stored in the array newRegister. Add the new register to the original array. Print the updated salesArray.
+## Step 8: Superstore has added a 5th cash register who's data is stored in the array newRegister. Add the new register to the original array.
+# Print the updated salesArray.
 print(
     "-----------------------------------------------   STEP EIGHT  -----------------------------------------------"
 )
 newRegister = np.array([17.89, 13.59, 107.89, 176.88, 56.78])
+
+salesArray = np.vstack([salesArray, newRegister])
+print(salesArray)
 
 print()
 
@@ -91,5 +113,14 @@ print()
 print(
     "-----------------------------------------------   STEP NINE  -----------------------------------------------"
 )
+
+print("Before")
+print(salesArray)
+
+salesArray[[2],3] = 20.14
+
+print("\nAfter")
+print(salesArray)
+
 
 print()
